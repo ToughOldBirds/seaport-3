@@ -1,0 +1,42 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  color: #111827;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  background: #0f62fe;
+  color: white;
+  cursor: pointer;
+  margin-right: 0.6rem;
+}
+
+button.secondary {
+  background: #475569;
+}
