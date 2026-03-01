@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { OfficeProvider } from "@/office/OfficeContext";
 
 export const metadata: Metadata = {
   title: "Word + Web Shared App",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <OfficeProvider>{children}</OfficeProvider>
+      </body>
     </html>
   );
 }

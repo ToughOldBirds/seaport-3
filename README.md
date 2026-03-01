@@ -9,17 +9,15 @@ This project demonstrates one Next.js deployment URL serving:
 ## Key architecture decisions
 
 - **Client-side Office host detection only** through `Office.onReady`.
-- **Office provider is scoped to Office routes only** using an App Router route group (`app/(office)/layout.tsx`).
-- **Pure web routes are not readiness-gated**, so browser users do not wait on Office readiness.
-- **Readiness gate** (`EnvironmentGate`) is only applied where Office APIs are expected (`/taskpane`).
+- **Global `OfficeProvider`** in `app/layout.tsx` so Office readiness runs once.
+- **Readiness gate** with `EnvironmentGate` to prevent race conditions.
 - **Shared auth + backend patterns** reused by browser and taskpane views.
 - **Word feature gating** through `isWord` checks.
 
 ## Important files
 
 - `office/OfficeContext.tsx`: Office runtime detection + readiness state.
-- `app/(office)/layout.tsx`: scopes `OfficeProvider` to Office experiences.
-- `components/EnvironmentGate.tsx`: readiness gate used for Office taskpane rendering.
+- `office/useWordSafe.ts`: fail-fast helper for Word-only APIs.
 - `components/SharedDashboard.tsx`: same UI pattern for `/` and `/taskpane`.
 - `components/TaskpaneDialogActions.tsx`: Office modal dialog and popup fallback.
 - `app/api/me/route.ts`: shared backend call pattern.
